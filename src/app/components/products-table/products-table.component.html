@@ -1,1 +1,27 @@
-<p>products-table works!</p>
+@if (productsService.loading$|async) {
+  Loading data...
+} @else {
+  <table>
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Rating</th>
+    </tr>
+    </thead>
+
+    <tbody>
+      @for (product of productsService.products$|async; track product.id) {
+        <tr>
+          <td>{{ product.id }}</td>
+          <td>{{ product.title }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.price }} $</td>
+          <td>{{ product.rating }} / 5</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
