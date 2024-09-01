@@ -3,6 +3,7 @@ import {ProductsService} from '../../services/products.service';
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {BehaviorSubject, combineLatest, map, Observable} from 'rxjs';
 import {Product, ProductProperty} from '../../types/product';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-products-table',
@@ -10,7 +11,8 @@ import {Product, ProductProperty} from '../../types/product';
   imports: [
     NgIf,
     AsyncPipe,
-    NgForOf
+    NgForOf,
+    RouterLink
   ],
   templateUrl: './products-table.component.html',
   styleUrl: './products-table.component.scss'
