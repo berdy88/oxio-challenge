@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, catchError, finalize} from 'rxjs';
+import {BehaviorSubject, finalize, tap} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Product} from '../types/product';
 
@@ -39,6 +39,13 @@ export class ProductsService {
   }
 
   addProduct(newProduct: Partial<Product>) {
-    // TODO
+    this.loading$.next(true);
+    return this.httpClient.post<Product>(`${API_URL}/products/add`, newProduct).pipe(
+      tap((addedProduct) => {
+        // this.refresh();
+        this.productsData.next([...this.productsData.getValue(), addedProduct]);
+      }),
+      // catchError(),
+      finalize(() => this.loading$.next(false)));
   }
 }

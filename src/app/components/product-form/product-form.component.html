@@ -1,1 +1,41 @@
-<p>product-form works!</p>
+<header>
+  <h1>New Entry</h1>
+</header>
+
+<form [formGroup]="productForm">
+  <label>
+    Title:
+    <input type="text" formControlName="title">
+    <div class="error" *ngIf="productForm.controls['title'].errors?.['required']">Required</div>
+    <div class="error" *ngIf="productForm.controls['title'].errors?.['minlength']">Minimum 3 letters</div>
+  </label>
+
+  <label>
+    Category:
+    <select formControlName="category">
+      @for (category of categories; track category) {
+        <option [value]="category">{{category}}</option>
+      }
+    </select>
+    <div class="error" *ngIf="productForm.controls['category'].errors?.['required']">Required</div>
+  </label>
+
+  <label>
+    Price:
+    <input type="number" min="0" pattern="^\d+(\.\d{2})?$" formControlName="price">
+    <div class="error" *ngIf="productForm.controls['price'].errors?.['required']">Required</div>
+    <div class="error" *ngIf="productForm.controls['price'].errors?.['pattern']">Should be a number with 2 decimals or none</div>
+  </label>
+
+  <label>
+    Rating:
+    <input type="number" min="0" pattern="^\d+(\.\d{2})?$" formControlName="rating">
+    <div class="error" *ngIf="productForm.controls['rating'].errors?.['required']">Required</div>
+    <div class="error" *ngIf="productForm.controls['rating'].errors?.['pattern']">Should be a number with 2 decimals or none</div>
+  </label>
+
+  <div class="actions">
+    <button class="button cta cancel" routerLink="/dashboard">Cancel</button>
+    <button class="button cta primary" (click)="submitProduct()" [disabled]="productForm.invalid || (productsService.loading$ | async)">Submit <span *ngIf="productsService.loading$ | async">...</span></button>
+  </div>
+</form>

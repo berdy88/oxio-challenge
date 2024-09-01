@@ -1,0 +1,9 @@
+option {
+  text-transform: capitalize;
+}
+
+.error {
+  display: none;
+}
+
+.ng-touched~.error{ display: block}
