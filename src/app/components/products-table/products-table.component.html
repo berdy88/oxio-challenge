@@ -4,22 +4,22 @@
   <table>
     <thead>
     <tr>
-      <th>Id</th>
-      <th>Title</th>
-      <th>Category</th>
-      <th>Price</th>
-      <th>Rating</th>
+      <th (click)="sortColumn('id')">Id</th>
+      <th (click)="sortColumn('title')">Title</th>
+      <th (click)="sortColumn('category')">Category</th>
+      <th (click)="sortColumn('price')">Price</th>
+      <th (click)="sortColumn('rating')">Rating</th>
     </tr>
     </thead>
 
     <tbody>
-      @for (product of productsService.products$|async; track product.id) {
+      @for (product of sortedProducts$|async; track product.id) {
         <tr>
           <td>{{ product.id }}</td>
           <td>{{ product.title }}</td>
           <td>{{ product.category }}</td>
           <td>{{ product.price }} $</td>
-          <td>{{ product.rating }} / 5</td>
+          <td>{{ product.rating }}</td>
         </tr>
       }
     </tbody>
