@@ -1,9 +1,45 @@
-option {
-  text-transform: capitalize;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 300px;
+
+  label {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  option {
+    text-transform: capitalize;
+  }
+
+  .error {
+    display: none;
+    color: var(--error);
+  }
+
+  input, select {
+    &.ng-touched.ng-invalid {
+      border: 1px solid var(--error);
+
+      & ~ .error {
+        display: block
+      }
+    }
+  }
+
+  .form-input {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-.error {
-  display: none;
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
 }
 
-.ng-touched~.error{ display: block}
+.cancel {
+  color: var(--primary);
+}

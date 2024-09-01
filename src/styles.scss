@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --primary: steelblue;
+  --secondary: lightsteelblue;
+  --contrast-color: midnightblue;
+  --text: #222;
+  --text-contrast: #fff;
+  --error: orangered;
+}
+
+header {
+  display: flex;
+  gap: 20px;
+  background: var(--primary);
+  color: var(--text-contrast);
+  margin-bottom: 20px;
+}
+
+.button {
+  padding: 8px;
+  font-weight: bold;
+  background: var(--secondary);
+  color: var(--text);
+  border: 1px solid var(--secondary);
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover:not([disabled]) {
+    border-color: var(--contrast-color);
+  }
+
+  &[disabled] {
+    opacity: 0.8;
+    cursor: default;
+  }
+
+  &.primary {
+    background: var(--primary);
+    color: var(--text-contrast);
+
+    &[disabled] {
+      color: var(--secondary);
+    }
+  }
+
+  &.cta {
+    font-size: 16px;
+  }
+}
+
+h1 {
+  padding: 20px;
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}

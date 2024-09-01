@@ -7,3 +7,19 @@
   text-align: right;
   margin-bottom: 20px;
 }
+
+table {
+  min-width: 50%;
+
+  thead {
+    th {
+      background: var(--primary);
+      color: var(--text-contrast);
+      cursor: pointer;
+    }
+  }
+
+  th, td {
+    padding: 4px;
+  }
+}

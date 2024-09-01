@@ -1,0 +1,17 @@
+.page-link {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--secondary);
+  border: none;
+  background: unset;
+
+  &.active {
+    color: var(--text-contrast);
+  }
+
+  &:hover:not(.active) {
+    color: var(--text-contrast);
+  }
+}

@@ -1,9 +1,7 @@
-<h1>Products</h1>
-
 <div class="container">
 
   <div class="align-right">
-    <button routerLink="/new-product">+ New Product</button>
+    <button class="button cta primary" routerLink="/new-product">+ New Product</button>
   </div>
 
   @if (productsService.loading$|async) {

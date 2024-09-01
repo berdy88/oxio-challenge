@@ -53,7 +53,7 @@ export class ProductFormComponent {
       title: ['', [Validators.required, Validators.minLength(3)]],
       category: [undefined, Validators.required],
       price: [undefined, [Validators.required, Validators.pattern(/^\d+(\.\d{2})?$/), Validators.min(0)]],
-      rating: [undefined, [Validators.required, Validators.pattern(/^\d+(\.\d{2})?$/), Validators.min(0)]],
+      rating: [undefined, [Validators.required, Validators.pattern(/^\d(\.\d{2})?$/), Validators.min(0), Validators.max(5)]],
     });
   }
 
